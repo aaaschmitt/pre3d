@@ -1,5 +1,3 @@
-// (c) Dean McNamee <dean@gmail.com>.  All rights reserved.
-
 window.addEventListener('load', function() {
   var black = new Pre3d.RGBA(0, 0, 0, 1);
   var white = new Pre3d.RGBA(1, 1, 1, 1);

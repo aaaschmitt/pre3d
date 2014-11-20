@@ -28,47 +28,19 @@ function start3d() {
     sphere_y: 0
   };
 
-  // function draw() {
-  //   renderer.transform.reset();
-  //   renderer.transform.rotateX(state.sphere_rotate_x_rad);
-  //   renderer.transform.rotateY(state.sphere_rotate_y_rad);
-  //   renderer.transform.translate(state.sphere_x, state.sphere_y, -4);
-  //   renderer.bufferShape(sphere);
-
-  //   // White background.
-  //   renderer.ctx.setFillColor(1, 1, 1, 1);
-  //   renderer.drawBackground();
-
-  //   renderer.drawBuffer();
-  //   renderer.emptyBuffer();
-  // }
-
-  var circle = Pre3d.PathUtils.makeCircle();
-
-  renderer.ctx.setStrokeColor(0x52 / 255, 0xbb / 255, 0x5c / 255, 1);
-  renderer.ctx.lineWidth = 2;
-
   function draw() {
+    renderer.transform.reset();
+    renderer.transform.rotateX(state.sphere_rotate_x_rad);
+    renderer.transform.rotateY(state.sphere_rotate_y_rad);
+    renderer.transform.translate(state.sphere_x, state.sphere_y, -4);
+    renderer.bufferShape(sphere);
+
     // White background.
     renderer.ctx.setFillColor(1, 1, 1, 1);
     renderer.drawBackground();
 
-    renderer.transform.reset();
-    renderer.transform.translate(-0.5, 0, 0);  // Center over the origin.
-
-    var side_line = Pre3d.PathUtils.makeLine({x: 0, y: 0, z: -0.5},
-                                             {x: 0, y: 0, z: -5});
-    renderer.pushTransform();
-    for (var i = 0, il = 8; i < il; ++i) {
-      renderer.transform.rotateZ(1/il * Math.PI * 2);
-      renderer.drawPath(side_line);
-    }
-    renderer.popTransform();
-
-    for (var i = 0; i < 10; ++i) {
-      renderer.transform.translate(0, 0, -0.5);
-      renderer.drawPath(circle);
-    }
+    renderer.drawBuffer();
+    renderer.emptyBuffer();
   }
 
   renderer.camera.focal_length = 2.5;
@@ -97,4 +69,4 @@ function start3d() {
   ticker.start();
 }
 
-window.addEventListener('load', start3d(), false);
+start3d();
